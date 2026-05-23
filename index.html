@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我是破烂王 - 合成经营小游戏</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- 顶部栏 -->
+        <header class="header">
+            <h1 class="game-title">🗑️ 我是破烂王</h1>
+            <div class="gold-display" id="gold-display">💰 0</div>
+            <div class="header-actions">
+                <button class="icon-btn help-btn" onclick="showHelp()" title="帮助">
+                    <img src="image/帮助.png" alt="帮助">
+                </button>
+                <button class="icon-btn reset-btn" onclick="manualResetGame()" title="重置游戏">
+                    <img src="image/重置游戏.png" alt="重置游戏">
+                </button>
+            </div>
+        </header>
+
+        <!-- 合成区域 -->
+        <section class="synthesis-section">
+            <div class="action-area">
+                <!-- 垃圾桶按钮 -->
+                <button class="trash-bin-btn" id="trash-bin-btn" title="购买盲盒">
+                    <img class="action-btn-img" src="image/垃圾桶.png" alt="垃圾桶">
+                    <span class="trash-bin-text">垃圾桶</span>
+                    <span class="trash-bin-price">15金币</span>
+                </button>
+
+                <!-- 合成区域 -->
+                <div class="synthesis-area" id="synthesis-area">
+                    <h3 class="synthesis-title">🔧 合成区域</h3>
+                    <p class="synthesis-hint">连续拖拽两张卡牌进行合成</p>
+                    <div class="synthesis-slot" id="synthesis-slot-1">
+                        <div class="slot-placeholder">拖拽卡牌到此处</div>
+                    </div>
+                </div>
+
+                <!-- 收购商按钮 -->
+                <button class="merchant-btn" id="merchant-btn" title="出售破烂">
+                    <img class="action-btn-img merchant-btn-img" src="image/收购商.png" alt="收购商">
+                    <span class="merchant-text">收购商</span>
+                </button>
+            </div>
+
+            <!-- 消息区域 -->
+            <div class="message-area" id="message-area"></div>
+        </section>
+
+        <!-- 背包区域 -->
+        <div class="backpack" id="backpack"></div>
+    </div>
+
+    <!-- 收购商弹窗 -->
+    <div class="modal-overlay hidden" id="merchant-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">收购商</h2>
+                <button class="modal-close" id="close-merchant-btn">✕</button>
+            </div>
+            
+            <div class="merchant-area">
+                <div class="merchant-avatar">
+                    <img class="merchant-image" src="image/收购商弹窗.png" alt="收购商">
+                    <div class="merchant-mood" id="merchant-mood">把破烂给我看看！</div>
+                </div>
+                
+                <div class="merchant-slot-area">
+                    <div id="merchant-slot">
+                        <div class="slot-placeholder">拖拽卡牌到此处</div>
+                    </div>
+                    <div class="merchant-price-display" id="merchant-price">等待估价...</div>
+                </div>
+            </div>
+            
+            <div class="modal-actions">
+                <button class="btn btn-primary" id="sell-btn" disabled>请先放入卡牌</button>
+                <button class="btn btn-secondary" onclick="closeMerchantModal()">取消</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 模块 -->
+    <script src="js/models.js"></script>
+    <script src="js/state.js"></script>
+    <script src="js/ai-service.js"></script>
+    <script src="js/cards.js"></script>
+    <script src="js/synthesis.js"></script>
+    <script src="js/merchant.js"></script>
+    <script src="js/trash-bin.js"></script>
+    <script src="js/game-over.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
